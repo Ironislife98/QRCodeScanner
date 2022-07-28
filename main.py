@@ -40,8 +40,12 @@ while True:
     if event in (sg.WIN_CLOSED, "Cancel"):
         break
     elif event == "Scan":
-        filename = values['-file1-']
+        path = values['-file1-']
+        if not QrUtil.scan_qrcode(path):
+            sg.popup_error("Select a valid QR code!")
     elif event == "Take QR code from your camera":
         print("opening camera")
+        if not QrUtil.camera_scan_qr():
+            sg.popup_auto_close("Exited")
         
 window.close()

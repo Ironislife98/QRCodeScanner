@@ -1,0 +1,3 @@
+import QrUtil
+
+QrUtil.camera_scan_qr()
