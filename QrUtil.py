@@ -10,19 +10,20 @@ import webbrowser
 chrome_path = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
 
-def generate_qrcode(link, filename):
+def generate_qrcode(link, filename, version, boxsize, border):
     #img = qrcode.make(link)
     #img.save(filename)
     qr = qrcode.QRCode(
-        version=1,
+        version=version,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4
+        box_size=boxsize,
+        border=border
     )
     qr.add_data(link)
     qr.make(fit=True)
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(filename)
+    
 
 # method
 """ 12 types of styles
