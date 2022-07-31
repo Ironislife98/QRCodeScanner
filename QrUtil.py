@@ -1,11 +1,17 @@
-import qrcode
-import qrcode.image.svg
-from qrcode.image.styledpil import StyledPilImage
-from qrcode.image.styles.moduledrawers import RoundedModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
-from qrcode.image.styles.colormasks import RadialGradiantColorMask, SolidFillColorMask, SquareGradiantColorMask, HorizontalGradiantColorMask, VerticalGradiantColorMask, ImageColorMask
-import cv2
-import pyzbar.pyzbar as pyzbar
-import webbrowser
+import os
+try:
+    import qrcode
+    import qrcode.image.svg
+    from qrcode.image.styledpil import StyledPilImage
+    from qrcode.image.styles.moduledrawers import RoundedModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
+    from qrcode.image.styles.colormasks import RadialGradiantColorMask, SolidFillColorMask, SquareGradiantColorMask, HorizontalGradiantColorMask, VerticalGradiantColorMask, ImageColorMask
+    import cv2
+    import pyzbar.pyzbar as pyzbar
+    import webbrowser
+    import wand.image
+except ModuleNotFoundError:
+    os.system("pip install -r requirements.txt")
+    print("Run application again")
 
 chrome_path = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
@@ -15,7 +21,7 @@ def generate_qrcode(link, filename, version, boxsize, border):
     #img.save(filename)
     qr = qrcode.QRCode(
         version=version,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        error_correction=qrcode.constants.ERROR_CORRECT_M,
         box_size=boxsize,
         border=border
     )
@@ -26,8 +32,7 @@ def generate_qrcode(link, filename, version, boxsize, border):
     
 
 # method
-""" 12 types of styles
-
+""" 
     PIL MODULE DRAWERS
     --------------------
     SquareModuleDrawer()
@@ -35,7 +40,7 @@ def generate_qrcode(link, filename, version, boxsize, border):
     CircleModuleDrawer()
     RoundedModuleDrawer()
     VerticalBarsDrawer()
-    Horizontal Bars Drawer
+    HorizontalBarsDrawer()
 
     COLOR MASKS
     --------------------
@@ -45,16 +50,28 @@ def generate_qrcode(link, filename, version, boxsize, border):
     HorizontalGradiantColorMask()
     VerticalGradientColorMask()
     ImageColorMask()
+
+    ERROR CORRECTION MODE
+    ---------------------
+    ERROR_CORRECT_L - 7%
+    ERROR_CORRECT_M - 15%
+    ERROR_CORRECT_Q - 25%
+    ERROR_CORRECT_H - 30%  
 """
-def generate_advanced_qrcode(link, filename, error_corr, styled, typeofstyle):
+
+def generate_advanced_qrcode(link, filename, error_corr, colormask, pildrawer):
     qr = qrcode.QRCode(error_correction=error_corr)
     qr.add_data(link)
-    if not styled:
-        img = qr.make_image(image_factory=StyledPilImage)
-        img.save(filename)
-    else:
-        img = qr.make_image(image_factory=StyledPilImage, module_drawer=typeofstyle[0], color_mask=typeofstyle[1])
-        img.save(filename)
+    img = qr.make_image(image_factory=qrcode.image.svg.SvgPathFillImage, module_drawer=pildrawer, color_mask=colormask)
+    img.save(filename)
+    f = open(f"{filename}")
+    #svg2png(bytestring=f.read().encode("utf-8"),write_to=f"{filename}.png")
+    with wand.image.Image(blob=f.read().encode("utf-8"), format="svg" ) as image:
+        png_image = image.make_blob("png")
+    f.close()
+    with open(f"{filename[:-4]}.png", "wb") as out:
+        out.write(png_image)
+    os.remove(f"{filename}")
 
 def scan_qrcode(path):
     try:

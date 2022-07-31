@@ -28,9 +28,8 @@ create_column_layout = [
 
 ]
 
-
 def block_focus(window):
-    for key in window.key_dict:    # Remove dash box of all Buttons
+    for key in window.key_dict:   
         element = window[key]
         if isinstance(element, sg.Button):
             element.block_focus()
@@ -41,7 +40,7 @@ def popup_basic_menu():
     layout = [
         [[sg.Text("QR code link:")], [sg.InputText(key="link")]],
         [[sg.Text("Filename:")], [sg.InputText(key="filename")]],
-        [[sg.Text("Version:")], [sg.InputText(key="version")]],
+        [[sg.Text("Version (1-40):")], [sg.InputText(key="version")]],
         #[[sg.Text("Box size:")], [sg.InputText(key="boxsize")]],
         #[[sg.Text("Border")], [sg.InputText(key="border")]],
         [sg.Column(col_layout, expand_x=True, element_justification='right')]
@@ -51,14 +50,58 @@ def popup_basic_menu():
     block_focus(window)
     event, values = window.read()
     window.close()
-    print(values) 
+    
+    # Will append .png to end of file if not already
     if values["filename"][-4:] != ".png":
-        values["filename"] = values["filename"] + ".png"    
-    QrUtil.generate_qrcode(values["link"], values["filename"], values["version"],10, 4)
-    sg.popup_auto_close(f"{values['filename']} created!", auto_close_duration=2)
+        values["filename"] = values["filename"] + ".png" 
+    try:
+        # If user doesn't set version correctly, set to 1
+        if int(values["version"]) not in range(1, 40):
+            values["version"] = 1
+    except ValueError:
+        sg.popup_error("One or more fields left empty")
+        popup_basic_menu()
+    try:
+        QrUtil.generate_qrcode(values["link"], values["filename"], values["version"],10, 4)
+        sg.popup_auto_close(f"{values['filename']} created!", auto_close_duration=2)
+    except NameError:
+        sg.popup_error("One or more fields left empty")
+        popup_basic_menu()
 
+
+# ALL VARIABLES: LINK, FILENAME, ERR_CORR, COLOR MASK, PIL DRAWER
+# ERR correction will be auto set to ERROR_CORRECT_M - 15%
 def popup_advanced_menu():
-    pass
+    errorcorrlist = ["7%", "15%", "25%", "30%"]
+    errorcorrtechnicallist = [QrUtil.qrcode.ERROR_CORRECT_L, QrUtil.qrcode.ERROR_CORRECT_M, QrUtil.qrcode.ERROR_CORRECT_Q, QrUtil.qrcode.ERROR_CORRECT_H]
+    colormasklist = ["Solid Fill", "Radial Gradient", "Square Gradient", "Horizontal Gradient", "Vertical Gradient", "Image"]
+    pildrawerlist = ["Square", "Gapped Square", "Circle", "Rounded", "Vertical Bars", "Horizontal Bars"]
+
+    col_layout = [[sg.Button("Create", bind_return_key=True), sg.Button('Cancel')]]
+    layout = [
+        [sg.Text("QR code link:"), sg.InputText(key="link")],
+        [sg.Text("Filename:"), sg.InputText(key="filename")],
+        [sg.Text("Error Correction Percentage:"), sg.Combo(errorcorrlist, default_value=errorcorrlist[2], key="errorcorr")],
+        [sg.Text("Color Masks:"), sg.Combo(colormasklist, default_value=colormasklist[0], key="colormask")],
+        [sg.Text("Render Mode:"), sg.Combo(pildrawerlist, default_value=pildrawerlist[0], key="pildrawer")],
+        [sg.Column(col_layout, expand_x=True, element_justification='right')]
+    ]
+
+   
+
+    window = sg.Window("Advanced QR code maker", layout, use_default_focus=False, finalize=True, modal=True)
+    block_focus(window)
+    event, values = window.read()
+    window.close() 
+    if values["filename"][-4:] != ".svg":
+        values["filename"] = values["filename"] + ".svg" 
+    values["errorcorr"] = errorcorrtechnicallist[errorcorrlist.index(values["errorcorr"])]
+    try:
+        QrUtil.generate_advanced_qrcode(values["link"], values["filename"], values["errorcorr"], values["colormask"], values["pildrawer"])
+        sg.popup_auto_close(f"{values['filename']} created!", auto_close_duration=2)
+    except NameError:
+        sg.popup_error("One or more fields left empty")
+        popup_basic_menu()
 
 layout = [[sg.Text('Scan or create a QR code')],
           [sg.TabGroup([[sg.Tab('Scan', scan_layout), sg.Tab('Create', [[sg.Column(create_column_layout)]])]])],
