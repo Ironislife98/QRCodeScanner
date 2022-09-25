@@ -32,6 +32,37 @@ Start the server
 ```
 
 
+## Advanced Mode Options
+
+    PIL MODULE DRAWERS
+    --------------------
+    SquareModuleDrawer()
+    GappedSquareModuleDrawer()
+    CircleModuleDrawer()
+    RoundedModuleDrawer()
+    VerticalBarsDrawer()
+    HorizontalBarsDrawer()
+
+    COLOR MASKS
+    --------------------
+    SolidFillColorMask()
+    RadialGradientColorMask()
+    SquareGradientColorMask()
+    HorizontalGradiantColorMask()
+    VerticalGradientColorMask()
+    ImageColorMask()
+
+    ERROR CORRECTION MODE
+    ---------------------
+    ERROR_CORRECT_L - 7%
+    ERROR_CORRECT_M - 15%
+    ERROR_CORRECT_Q - 25%
+    ERROR_CORRECT_H - 30%  
+
+## Acknowledgements
+
+ - [Pure python QR Code generator](https://github.com/lincolnloop/python-qrcode)
+ 
 ## Authors
 
 - [@Ironislife98](https://github.com/Ironislife98)
