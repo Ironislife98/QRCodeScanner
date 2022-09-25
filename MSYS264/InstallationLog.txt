@@ -1,0 +1,86 @@
+************************************* Invoked: Sun Jul 31 20:53:13 2022
+[0] Arguments: D:\PycharmProjects\QR Code Scanner\msys2-x86_64-20220603.exe
+[76] Operations sanity check succeeded.
+[110] Language: en-US
+[114] Warning: QMimeDatabase: Error loading internal MIME data
+An error has been encountered at line 1 of <internal MIME data>: Premature end of document.:
+[4817] Loaded control script ":/metadata/installer-config/control_js.js"
+[4817] Using control script: ":/metadata/installer-config/control_js.js"
+[7628] Preparing meta information download...
+[49482] backup  operation: Mkdir
+[49482] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264
+[49482] Done
+[49482] perform  operation: Mkdir
+[49482] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264
+[49482] Done
+[49483] Preparing the installation...
+[49483] Install size: 2 components
+[49520] Installing component MSYS2 64bit base
+[49520] backup com.msys2.root.base operation: Extract
+[49520] 	- arguments: installer://com.msys2.root.base/20220603msys64.7z, D:/PycharmProjects/QR Code Scanner/MSYS264
+[49520] Done
+[49520] perform com.msys2.root.base operation: Extract
+[49520] 	- arguments: installer://com.msys2.root.base/20220603msys64.7z, D:/PycharmProjects/QR Code Scanner/MSYS264
+[133238] Done
+[133238] backup com.msys2.root.base operation: CreateShortcut
+[133238] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW x86.lnk, -mingw32, iconPath=D:/PycharmProjects/QR Code Scanner/MSYS264/mingw32.exe
+[133239] Done
+[133239] perform com.msys2.root.base operation: CreateShortcut
+[133239] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW x86.lnk, -mingw32
+[133268] Done
+[133269] backup com.msys2.root.base operation: CreateShortcut
+[133269] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW x64.lnk, -mingw64, iconPath=D:/PycharmProjects/QR Code Scanner/MSYS264/mingw64.exe
+[133269] Done
+[133269] perform com.msys2.root.base operation: CreateShortcut
+[133269] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW x64.lnk, -mingw64
+[133287] Done
+[133287] backup com.msys2.root.base operation: CreateShortcut
+[133287] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW UCRT x64.lnk, -ucrt64, iconPath=D:/PycharmProjects/QR Code Scanner/MSYS264/ucrt64.exe
+[133287] Done
+[133287] perform com.msys2.root.base operation: CreateShortcut
+[133288] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW UCRT x64.lnk, -ucrt64
+[133308] Done
+[133308] backup com.msys2.root.base operation: CreateShortcut
+[133308] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW Clang x64.lnk, -clang64, iconPath=D:/PycharmProjects/QR Code Scanner/MSYS264/clang64.exe
+[133309] Done
+[133309] perform com.msys2.root.base operation: CreateShortcut
+[133309] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MinGW Clang x64.lnk, -clang64
+[133329] Done
+[133329] backup com.msys2.root.base operation: CreateShortcut
+[133329] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MSYS.lnk, -msys, iconPath=D:/PycharmProjects/QR Code Scanner/MSYS264/msys2.exe
+[133329] Done
+[133329] perform com.msys2.root.base operation: CreateShortcut
+[133329] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\msys2_shell.cmd, C:\Users\Emilio\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MSYS2 64bit/MSYS2 MSYS.lnk, -msys
+[133347] Done
+[133347] backup com.msys2.root.base operation: Execute
+[133348] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\usr\bin\bash.exe, --login, -c, exit
+[133348] Done
+[133348] perform com.msys2.root.base operation: Execute
+[133349] 	- arguments: D:/PycharmProjects/QR Code Scanner/MSYS264\usr\bin\bash.exe, --login, -c, exit
+[133428] D:/PycharmProjects/QR Code Scanner/MSYS264\\usr\\bin\\bash.exe" started, arguments: "--login -c exit
+[137064] Copying skeleton files.\nThese files are for the users to personalise their msys2 experience.\n\nThey will never be overwritten nor automatically updated.\n\n
+[137377] './.bashrc' -> '/home/Emilio/.bashrc'\n
+[137409] './.bash_logout' -> '/home/Emilio/.bash_logout'\n
+[137560] './.bash_profile' -> '/home/Emilio/.bash_profile'\n
+[137631] './.inputrc' -> '/home/Emilio/.inputrc'\n
+[137783] './.profile' -> '/home/Emilio/.profile'\n
+[138416] 'C:\\WINDOWS\\system32\\drivers\\etc\\hosts' -> '/etc/hosts'\n
+[138567] 'C:\\WINDOWS\\system32\\drivers\\etc\\protocol' -> '/etc/protocols'\n
+[138879] 'C:\\WINDOWS\\system32\\drivers\\etc\\services' -> '/etc/services'\n
+[139192] 'C:\\WINDOWS\\system32\\drivers\\etc\\networks' -> '/etc/networks'\n
+[144603] ==> Generating pacman master key. This may take some time.\n
+[146390] ==> Updating trust database...\n
+[147676] ==> Appending keys from msys2.gpg...\n
+[151313] ==> Locally signing trusted keys in keyring...\n
+[153446]   -> Locally signed 5 keys.\n
+[153518] ==> Importing owner trust values...\n
+[153740] ==> Disabling revoked keys in keyring...\n
+[154876]   -> Disabled 3 keys.\n==> Updating trust database...\n
+[181833] \x1B[H\x1B[2J\x1B[3J\n\n###################################################################\n#                                                                 #\n#                                                                 #\n#                   C   A   U   T   I   O   N                     #\n#                                                                 #\n#                  This is first start of MSYS2.                  #\n#       You MUST restart shell to apply necessary actions.        #\n#                                                                 #\n#                                                                 #\n###################################################################\n\n\n\x1B[H\x1B[2J\x1B[3J
+[181834] Done
+[182119] Writing maintenance tool: "D:/PycharmProjects/QR Code Scanner/MSYS264/uninstall.exe.new"
+[182119] Writing maintenance tool.
+[182353] Wrote permissions for maintenance tool.
+[182700] Maintenance tool hard restart: false.
+[182829] Installation finished!
+[268416] starting "D:/PycharmProjects/QR Code Scanner/MSYS264/msys2_shell.cmd" ()

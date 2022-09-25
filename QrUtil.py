@@ -71,6 +71,9 @@ def generate_advanced_qrcode(link, filename, error_corr, colormask, pildrawer):
     f.close()
     with open(f"{filename[:-4]}.png", "wb") as out:
         out.write(png_image)
+    """image = Image.open('/example/path/to/image/file.jpg/')
+    image.thumbnail((80, 80), Image.ANTIALIAS)
+    image.save('/some/path/thumb.jpg', 'JPEG', quality=88)"""
     os.remove(f"{filename}")
 
 def scan_qrcode(path):
@@ -110,19 +113,3 @@ def camera_scan_qr():
     cap.release()
     cv2.destroyAllWindows()
     return True
-
-
-"""cap = cv2.VideoCapture(0)
-    detector = cv2.QRCodeDetector()
-    while True:
-        _, img = cap.read()
-        data, bbox, _ = detector.detectAndDecode(img)
-        if bbox is not None:
-            for i in range(len(bbox)):
-                cv2.line(img, tuple(bbox[i][0]), tuple(bbox[(i+1) % len(bbox)][0]), color=(255, 0, 0), thickness=2)
-            if data:
-                print("[+] QR Code detected, data:", data)
-        cv2.imshow("img", img)
-        if cv2.waitKey(1) == ord("q"):
-            break"""
-    

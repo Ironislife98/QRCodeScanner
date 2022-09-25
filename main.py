@@ -1,12 +1,6 @@
 import QrUtil
 import PySimpleGUI as sg
 
-#QrUtil.generate_qrcode("https://www.google.com", "google.png")
-
-#QrUtil.generate_advanced_qrcode("google.com", "advanced.png", QrUtil.qrcode.constants.ERROR_CORRECT_L, True, [QrUtil.VerticalBarsDrawer(), QrUtil.HorizontalGradiantColorMask()])
-
-#QrUtil.scan_qrcode("advanced.png")
-
 width, height = 90, 10
 
 
@@ -109,7 +103,7 @@ layout = [[sg.Text('Scan or create a QR code')],
 
 
 
-window = sg.Window("QR Code Scanner", layout)
+window = sg.Window("QR Code Scanner", layout, icon="Images/qr-code.ico")
 
 while True:
     event, values = window.read()
